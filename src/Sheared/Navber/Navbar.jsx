@@ -6,6 +6,7 @@ const Navbar = () => {
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
         <li><NavLink to="/career">Career</NavLink></li>
+        <li><NavLink to="/login">Login</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 my-3">
@@ -30,7 +31,7 @@ const Navbar = () => {
                         <img src={png} />
                     </div>
                 </label>
-                <Link>
+                <Link to="/login">
                     <button className="btn btn-md bg-black text-white">Login</button>
                 </Link>
             </div>
