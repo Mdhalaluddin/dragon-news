@@ -26,7 +26,6 @@ const Home = () => {
                         key={aNews._id} news={aNews}
                         ></MainNews>)
                     }
-
                 </div>
                 <div className="">
                     <LeftSide></LeftSide>
