@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Sheared/Navber/Navbar";
+import { useContext} from "react";
+import { AuthContext } from "../../firebase/AuthProvider";
+
 
 const Register = () => {
-    const handleRegister = e=>{
+    const {createUser}= useContext(AuthContext)
+    const handleRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
-        
+
         const name = form.get('name');
         const photo = form.get('photo');
         const email = form.get('email');
         const password = form.get('password');
-        console.log(form.get(name,email, photo, password));
+        console.log(name, photo, email, password);
+
+        // create user
+        createUser(email, password)
+        .then(result=>{
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.error(error)
+        });
+    
+        
     }
+   
     return (
         <div>
             <Navbar></Navbar>
@@ -25,13 +41,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Your Name</span>
                             </label>
-                            <input type="Text" name="text" placeholder="Name" className="input input-bordered" required />
+                            <input type="Text" name="name" placeholder="Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" name="text" placeholder="Photo URL" className="input input-bordered" required />
+                            <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
